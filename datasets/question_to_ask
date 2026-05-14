@@ -1,0 +1,37 @@
+Sample Questions for the Deep Research Agent
+=============================================
+
+SINGLE-DATASET QUESTIONS
+--------------------------
+1. Which countries have the highest GDP per capita but also the highest CO2 emissions per capita?
+2. What is the trend in global temperature anomalies between 1990 and 2023?
+3. Which diseases have the highest treatment gaps and lowest vaccine coverage?
+4. Which cities have the worst air quality index despite being in high-income countries?
+5. What share of scientific publications in AI come from China vs. the US, and how has that changed since 2018?
+
+CROSS-DATASET / ANALYTICAL QUESTIONS
+--------------------------------------
+6. Is there a correlation between a country's internet penetration rate and its unemployment rate?
+7. Do countries with higher public education spending tend to score better on PISA math tests?
+8. Which regions are seeing both population growth and rising CO2 emissions simultaneously?
+9. Compare renewable energy capacity share against CO2 emissions per capita -- are high-renewable countries actually lower emitters?
+10. Is there a relationship between a country's Global Peace Index score and its food security index?
+
+TREND & FORECASTING QUESTIONS
+-------------------------------
+11. Based on the CO2 emissions trend from 2018-2023, which countries are on track to reduce emissions and which are not?
+12. How has the share of open-access scientific publications changed across all research fields since 2018?
+13. Which biomes have experienced the largest biodiversity loss relative to habitat loss since 2000?
+
+SYNTHESIS / POLICY QUESTIONS
+------------------------------
+14. Which countries have high AI readiness but low internet penetration -- where is the digital divide largest among AI-capable nations?
+15. What common factors do the top 5 most food-secure countries share in terms of GDP, education, and trade balance?
+16. Given mental health prevalence rates, suicide rates, and psychiatrist availability, which countries have the most underserved mental health populations?
+17. Which megacities combine high population density, poor air quality, and low public transit coverage -- and what does that suggest about infrastructure investment needs?
+
+MULTI-HOP REASONING QUESTIONS (hardest)
+-----------------------------------------
+18. Countries with high fertility rates tend to have younger median ages -- does that correlate with higher or lower AI adoption readiness in this dataset?
+19. Identify countries that rank in the bottom third for food security AND have experienced more than 20% habitat loss since 1970 in their primary biome.
+20. Which countries are simultaneously increasing renewable energy capacity, reducing CO2 emissions, and maintaining GDP growth above 2%?

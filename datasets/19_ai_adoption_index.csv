@@ -1,0 +1,25 @@
+country,year,ai_readiness_index,ai_investment_usd_billions,ai_startups_count,ai_patents_filed,ai_researchers_thousands,ai_government_strategy,ai_regulation_level,ai_talent_index,ai_computing_index,ai_data_index,top_use_case
+United States,2021,84.2,52.8,4820,32415,58.2,Yes,Low,91.2,88.4,82.1,Healthcare AI
+United States,2022,86.5,58.1,5210,36820,61.8,Yes,Low,92.4,89.1,83.5,Generative AI
+United States,2023,88.4,67.2,5940,42180,65.1,Yes,Medium,93.8,90.2,84.8,Generative AI
+China,2021,78.1,28.4,3210,54218,42.5,Yes,High,82.5,80.1,84.2,Surveillance
+China,2022,80.4,32.1,3680,61450,45.8,Yes,High,84.1,82.4,85.8,Industrial AI
+China,2023,82.8,36.8,4215,68820,49.4,Yes,High,85.8,84.1,87.1,Industrial AI
+United Kingdom,2021,72.4,8.2,1020,8214,12.1,Yes,Medium,78.4,74.2,70.5,Financial AI
+United Kingdom,2022,74.8,9.5,1148,9420,13.2,Yes,Medium,80.1,75.8,72.1,Financial AI
+United Kingdom,2023,76.5,11.2,1285,10840,14.2,Yes,Medium,81.5,77.2,73.8,Generative AI
+Germany,2021,70.2,5.8,820,7410,10.2,Yes,Medium,74.5,72.8,68.4,Manufacturing AI
+Germany,2022,72.5,7.1,945,8450,11.1,Yes,High,76.2,74.5,70.1,Manufacturing AI
+Germany,2023,74.8,8.8,1080,9850,12.1,Yes,High,77.8,76.1,71.8,Manufacturing AI
+Canada,2021,71.8,6.2,890,5218,11.8,Yes,Low,76.8,73.4,72.5,Healthcare AI
+Canada,2022,73.5,7.4,1020,6210,12.8,Yes,Low,78.4,74.8,74.1,Healthcare AI
+Canada,2023,75.4,8.5,1148,7420,13.8,Yes,Low,80.1,76.2,75.8,Generative AI
+France,2021,65.4,4.8,648,4812,8.8,Yes,Medium,70.2,68.5,65.4,Transportation AI
+France,2022,67.8,5.9,742,5620,9.5,Yes,High,71.8,70.1,67.1,Transportation AI
+France,2023,69.5,7.1,845,6580,10.2,Yes,High,73.5,71.8,68.8,Transportation AI
+India,2021,55.2,3.1,1180,2841,15.4,Yes,Low,58.2,52.4,60.8,IT Services AI
+India,2022,58.4,4.2,1420,3520,18.2,Yes,Low,61.4,55.8,63.5,IT Services AI
+India,2023,61.8,5.8,1720,4510,21.5,Yes,Medium,64.8,59.2,66.2,IT Services AI
+Brazil,2021,48.2,1.8,520,1248,6.8,Yes,Low,50.4,46.8,52.4,AgriTech AI
+Brazil,2022,50.5,2.1,598,1580,7.4,Yes,Low,52.8,49.2,54.8,AgriTech AI
+Brazil,2023,52.8,2.8,685,1950,8.2,Yes,Medium,55.1,51.8,57.1,AgriTech AI

@@ -1,0 +1,29 @@
+disease,year,global_cases_millions,global_deaths_thousands,case_fatality_rate_pct,highest_burden_region,vaccine_coverage_pct,new_drug_approvals,r0_estimate,transmission_route,who_priority_level
+Malaria,2018,228.0,405,0.18,Sub-Saharan Africa,55,0,2.0,Vector,1
+Malaria,2019,229.0,409,0.18,Sub-Saharan Africa,58,1,2.0,Vector,1
+Malaria,2020,241.0,627,0.26,Sub-Saharan Africa,54,0,2.0,Vector,1
+Malaria,2021,247.0,619,0.25,Sub-Saharan Africa,56,0,2.0,Vector,1
+Malaria,2022,249.0,608,0.24,Sub-Saharan Africa,59,0,2.0,Vector,1
+Malaria,2023,249.0,597,0.24,Sub-Saharan Africa,62,1,2.0,Vector,1
+Tuberculosis,2018,10.0,1448,14.5,South-East Asia,88,2,1.2,Airborne,1
+Tuberculosis,2019,10.0,1408,14.1,South-East Asia,89,2,1.2,Airborne,1
+Tuberculosis,2020,9.9,1500,15.2,South-East Asia,82,1,1.2,Airborne,1
+Tuberculosis,2021,10.6,1600,15.1,South-East Asia,80,2,1.2,Airborne,1
+Tuberculosis,2022,10.6,1320,12.5,South-East Asia,85,3,1.2,Airborne,1
+Tuberculosis,2023,10.8,1250,11.6,South-East Asia,87,3,1.2,Airborne,1
+HIV/AIDS,2018,37.9,770,2.03,Sub-Saharan Africa,n/a,4,3.5,Bloodborne/Sexual,1
+HIV/AIDS,2019,38.0,730,1.92,Sub-Saharan Africa,n/a,3,3.5,Bloodborne/Sexual,1
+HIV/AIDS,2020,37.7,680,1.80,Sub-Saharan Africa,n/a,3,3.5,Bloodborne/Sexual,1
+HIV/AIDS,2021,38.4,650,1.69,Sub-Saharan Africa,n/a,4,3.5,Bloodborne/Sexual,1
+HIV/AIDS,2022,39.0,630,1.62,Sub-Saharan Africa,n/a,5,3.5,Bloodborne/Sexual,1
+HIV/AIDS,2023,39.9,610,1.53,Sub-Saharan Africa,n/a,4,3.5,Bloodborne/Sexual,1
+COVID-19,2020,84.3,1828,2.17,Europe,2,12,2.5,Respiratory,1
+COVID-19,2021,186.0,3543,1.90,South-East Asia,36,8,2.5-4.5,Respiratory,1
+COVID-19,2022,551.0,1200,0.22,Western Pacific,63,6,5.0-12.0,Respiratory,1
+COVID-19,2023,102.0,245,0.24,Western Pacific,68,4,5.0-8.0,Respiratory,2
+Dengue,2018,5.2,1150,0.022,South-East Asia,n/a,1,2.0,Vector,2
+Dengue,2019,5.2,1148,0.022,South-East Asia,n/a,0,2.0,Vector,2
+Dengue,2020,4.2,1015,0.024,South-East Asia,n/a,0,2.0,Vector,2
+Dengue,2021,5.3,1160,0.022,South-East Asia,n/a,0,2.0,Vector,2
+Dengue,2022,4.2,1045,0.025,South-East Asia,n/a,0,2.0,Vector,2
+Dengue,2023,5.8,2017,0.035,Americas,n/a,0,2.0,Vector,2

@@ -1,0 +1,25 @@
+field,year,total_publications,open_access_pct,citation_index,top_cited_country,us_share_pct,china_share_pct,eu_share_pct,international_collab_pct,retraction_rate_per_10k
+Medicine & Health,2018,892450,38.2,2.14,USA,24.1,18.3,27.5,54.2,1.2
+Medicine & Health,2019,941200,41.5,2.19,USA,23.8,19.1,27.1,55.8,1.4
+Medicine & Health,2020,1021800,52.3,2.31,USA,23.1,20.2,26.8,51.4,1.8
+Medicine & Health,2021,1102300,56.7,2.28,USA,22.8,21.5,26.3,53.1,2.1
+Medicine & Health,2022,1050100,59.4,2.35,China,22.0,22.8,25.9,54.9,2.0
+Medicine & Health,2023,1080000,63.2,2.41,China,21.5,23.7,25.5,56.2,2.2
+Computer Science,2018,412300,45.1,1.98,USA,22.5,25.4,22.1,61.5,0.3
+Computer Science,2019,448500,48.2,2.05,USA,21.9,27.1,21.8,63.2,0.4
+Computer Science,2020,501200,53.9,2.18,China,21.2,29.3,21.0,65.4,0.4
+Computer Science,2021,589400,58.3,2.25,China,20.5,31.2,20.4,67.1,0.5
+Computer Science,2022,654800,62.1,2.33,China,19.8,33.4,19.8,68.9,0.5
+Computer Science,2023,712100,67.5,2.45,China,19.1,35.5,19.2,70.2,0.6
+Climate Science,2018,89200,41.8,2.88,USA,27.3,14.2,35.6,72.4,0.1
+Climate Science,2019,97800,45.1,2.95,USA,26.8,15.1,35.1,73.8,0.1
+Climate Science,2020,108500,50.2,3.02,USA,26.1,16.3,34.5,74.9,0.1
+Climate Science,2021,121400,54.7,3.11,USA,25.4,17.8,34.0,76.1,0.2
+Climate Science,2022,135200,58.9,3.19,USA,24.7,18.9,33.5,77.3,0.2
+Climate Science,2023,148700,63.4,3.28,USA,24.0,20.1,32.9,78.5,0.2
+Artificial Intelligence,2018,156900,48.2,2.45,USA,28.1,24.5,19.8,58.3,0.4
+Artificial Intelligence,2019,205800,52.4,2.58,USA,26.8,27.3,19.1,60.2,0.5
+Artificial Intelligence,2020,271300,57.1,2.71,China,25.3,30.1,18.5,62.4,0.6
+Artificial Intelligence,2021,358900,62.3,2.85,China,23.8,33.4,17.9,64.8,0.7
+Artificial Intelligence,2022,448200,67.8,2.99,China,22.1,36.2,17.2,67.1,0.8
+Artificial Intelligence,2023,534600,73.1,3.14,China,20.5,39.1,16.5,69.5,0.9

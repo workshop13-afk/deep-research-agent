@@ -1,0 +1,31 @@
+country,iso_code,year,gdp_usd_billions,gdp_per_capita_usd,gdp_growth_pct,region
+United States,USA,2023,26854,80412,2.5,North America
+China,CHN,2023,19374,13721,5.2,Asia
+Germany,DEU,2023,4309,51383,-0.3,Europe
+Japan,JPN,2023,4213,33815,1.9,Asia
+India,IND,2023,3737,2601,7.2,Asia
+United Kingdom,GBR,2023,3089,45295,0.1,Europe
+France,FRA,2023,2924,44748,0.9,Europe
+Brazil,BRA,2023,2082,9673,2.9,South America
+Canada,CAN,2023,2090,53247,1.1,North America
+Italy,ITA,2023,2010,34224,0.7,Europe
+South Korea,KOR,2023,1710,33147,1.4,Asia
+Australia,AUS,2023,1693,64964,2.0,Oceania
+Mexico,MEX,2023,1322,10047,3.2,North America
+Spain,ESP,2023,1582,32966,2.5,Europe
+Indonesia,IDN,2023,1319,4788,5.0,Asia
+Netherlands,NLD,2023,1092,62156,0.1,Europe
+Saudi Arabia,SAU,2023,1062,29922,-0.8,Middle East
+Turkey,TUR,2023,1029,11946,4.5,Europe/Asia
+Switzerland,CHE,2023,869,98767,0.8,Europe
+Poland,POL,2023,748,19775,0.2,Europe
+Argentina,ARG,2023,633,13722,-2.5,South America
+Sweden,SWE,2023,597,56890,-0.5,Europe
+Belgium,BEL,2023,627,53657,1.4,Europe
+Norway,NOR,2023,546,98459,0.5,Europe
+Nigeria,NGA,2023,477,2085,2.9,Africa
+South Africa,ZAF,2023,377,6161,0.6,Africa
+Egypt,EGY,2023,395,3562,3.8,Africa
+Pakistan,PAK,2023,338,1445,2.4,Asia
+Bangladesh,BGD,2023,460,2688,6.5,Asia
+Vietnam,VNM,2023,430,4316,5.1,Asia

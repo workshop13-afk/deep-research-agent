@@ -1,0 +1,26 @@
+country,year,exports_usd_billions,imports_usd_billions,trade_balance_usd_billions,top_export_category,top_import_category,export_gdp_pct,import_gdp_pct,fdi_inflows_usd_billions,fdi_outflows_usd_billions
+China,2019,2499,2080,419,Manufactured goods,Electronic components,17.5,14.6,141,137
+China,2020,2591,2056,535,Manufactured goods,Electronic components,18.0,14.3,163,133
+China,2021,3362,2688,674,Manufactured goods,Electronic components,21.0,16.8,181,145
+China,2022,3594,2716,878,Manufactured goods,Electronic components,21.9,16.6,180,148
+China,2023,3380,2560,820,Manufactured goods,Electronic components,20.6,15.6,163,148
+United States,2019,2510,3115,-605,Industrial machinery,Consumer goods,11.7,14.5,295,442
+United States,2020,2127,2805,-678,Industrial machinery,Consumer goods,10.5,13.8,156,279
+United States,2021,2532,3401,-869,Industrial machinery,Consumer goods,11.2,15.1,366,403
+United States,2022,3009,3946,-937,Industrial machinery,Consumer goods,12.3,16.1,388,379
+United States,2023,3050,3826,-776,Industrial machinery,Consumer goods,11.3,14.2,311,404
+Germany,2019,1489,1234,255,Motor vehicles,Motor vehicles,40.8,33.8,67,119
+Germany,2020,1380,1174,206,Motor vehicles,Motor vehicles,38.8,33.0,36,86
+Germany,2021,1632,1444,188,Motor vehicles,Motor vehicles,41.9,37.1,32,97
+Germany,2022,1562,1576,-14,Motor vehicles,Energy products,37.9,38.2,35,107
+Germany,2023,1690,1510,180,Motor vehicles,Motor vehicles,39.2,35.0,38,115
+Japan,2019,705,721,-16,Motor vehicles,Energy products,15.6,15.9,15,127
+Japan,2020,641,635,6,Motor vehicles,Energy products,14.8,14.7,10,115
+Japan,2021,756,776,-20,Motor vehicles,Energy products,17.4,17.9,25,145
+Japan,2022,747,896,-149,Motor vehicles,Energy products,17.5,21.1,28,157
+Japan,2023,718,855,-137,Motor vehicles,Energy products,17.0,20.3,22,140
+India,2019,322,477,-155,Refined petroleum,Crude oil,11.9,17.7,51,13
+India,2020,276,389,-113,Refined petroleum,Crude oil,10.5,14.8,64,12
+India,2021,395,573,-178,Refined petroleum,Crude oil,13.2,19.1,45,16
+India,2022,453,715,-262,Refined petroleum,Crude oil,13.2,20.8,49,15
+India,2023,451,678,-227,Refined petroleum,Crude oil,12.1,18.1,71,18

@@ -1,0 +1,21 @@
+region,biome,year,species_richness_index,mammal_species,bird_species,reptile_species,amphibian_species,fish_species,plant_species,threatened_species_pct,habitat_loss_pct_since_1970,invasive_species_count,protected_area_pct
+Amazon Basin,Tropical Rainforest,2000,98.2,430,1400,550,1000,3000,40000,8.1,12.4,280,18.2
+Amazon Basin,Tropical Rainforest,2010,95.1,425,1392,545,985,2950,39200,10.3,18.9,312,21.5
+Amazon Basin,Tropical Rainforest,2020,90.4,418,1378,538,964,2882,38100,13.8,25.3,345,24.8
+Amazon Basin,Tropical Rainforest,2023,88.1,412,1365,531,948,2840,37500,15.2,27.1,358,25.9
+Congo Basin,Tropical Rainforest,2000,94.5,400,1100,320,250,700,10000,7.5,10.2,142,12.8
+Congo Basin,Tropical Rainforest,2010,91.8,392,1085,312,241,680,9750,9.8,15.6,165,14.5
+Congo Basin,Tropical Rainforest,2020,87.2,381,1062,300,228,654,9400,13.1,21.2,188,16.3
+Congo Basin,Tropical Rainforest,2023,85.4,376,1050,295,221,640,9200,14.5,23.0,196,17.1
+Great Barrier Reef,Coral Reef,2000,96.8,8,212,180,0,5000,1500,9.2,15.3,225,33.5
+Great Barrier Reef,Coral Reef,2010,91.5,8,208,174,0,4850,1462,14.1,22.8,258,33.5
+Great Barrier Reef,Coral Reef,2020,82.3,7,199,165,0,4600,1398,21.5,31.5,285,33.5
+Great Barrier Reef,Coral Reef,2023,78.4,7,193,160,0,4450,1358,25.8,34.2,292,33.5
+Serengeti,Savanna/Grassland,2000,89.4,80,540,120,60,280,1800,6.5,8.9,88,35.2
+Serengeti,Savanna/Grassland,2010,87.1,78,532,117,58,272,1768,8.2,12.1,98,35.8
+Serengeti,Savanna/Grassland,2020,83.8,75,519,112,55,260,1720,10.8,15.8,112,36.5
+Serengeti,Savanna/Grassland,2023,82.4,74,514,110,54,255,1698,11.9,17.0,118,36.8
+Boreal Forest,Taiga,2000,72.1,120,420,30,25,200,2400,4.8,5.2,62,12.1
+Boreal Forest,Taiga,2010,70.8,119,416,29,24,195,2358,5.9,7.4,74,13.5
+Boreal Forest,Taiga,2020,68.5,116,408,28,23,188,2295,7.5,10.1,88,14.8
+Boreal Forest,Taiga,2023,67.4,115,403,27,22,184,2258,8.4,11.2,94,15.2

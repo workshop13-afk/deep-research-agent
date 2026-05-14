@@ -1,0 +1,25 @@
+ocean_region,year,surface_temp_anomaly_c,sea_level_rise_mm_since_1993,ocean_heat_content_zj,ph_level,co2_absorption_gt,coral_bleaching_events,microplastic_particles_per_m3,fishstock_overexploited_pct,dead_zones_count,arctic_sea_ice_extent_million_km2
+North Atlantic,2000,0.21,32,14.2,8.10,2.8,3,1850,28,15,n/a
+North Atlantic,2005,0.34,42,16.1,8.09,2.9,5,2100,31,18,n/a
+North Atlantic,2010,0.48,55,18.4,8.08,3.0,7,2450,33,22,n/a
+North Atlantic,2015,0.62,71,21.2,8.07,3.1,11,2980,35,26,n/a
+North Atlantic,2020,0.78,89,24.8,8.06,3.2,14,3580,37,30,n/a
+North Atlantic,2023,0.91,102,27.1,8.05,3.3,16,3940,38,33,n/a
+Pacific Ocean,2000,0.18,30,38.4,8.11,8.1,4,1420,26,42,n/a
+Pacific Ocean,2005,0.29,40,41.3,8.10,8.3,8,1690,29,48,n/a
+Pacific Ocean,2010,0.42,54,45.8,8.09,8.5,12,2010,31,55,n/a
+Pacific Ocean,2015,0.58,68,51.2,8.08,8.7,19,2480,33,62,n/a
+Pacific Ocean,2020,0.74,87,57.9,8.07,8.9,23,3010,35,70,n/a
+Pacific Ocean,2023,0.88,99,63.2,8.06,9.1,27,3350,36,76,n/a
+Arctic Ocean,2000,0.82,28,2.1,8.08,0.5,2,820,5,2,11.2
+Arctic Ocean,2005,1.14,38,2.4,8.07,0.5,2,920,6,3,10.5
+Arctic Ocean,2010,1.62,52,2.9,8.05,0.6,3,1120,7,4,9.7
+Arctic Ocean,2015,2.08,68,3.5,8.03,0.6,4,1380,8,4,9.0
+Arctic Ocean,2020,2.64,86,4.2,8.01,0.7,5,1680,9,5,8.1
+Arctic Ocean,2023,2.98,98,4.8,7.99,0.7,6,1890,10,5,7.4
+Indian Ocean,2000,0.24,31,18.6,8.10,2.1,5,1620,30,8,n/a
+Indian Ocean,2005,0.38,41,20.4,8.09,2.2,9,1890,33,10,n/a
+Indian Ocean,2010,0.54,55,23.0,8.08,2.3,14,2240,35,13,n/a
+Indian Ocean,2015,0.71,70,26.2,8.07,2.4,21,2730,37,16,n/a
+Indian Ocean,2020,0.89,88,30.1,8.06,2.5,26,3280,39,19,n/a
+Indian Ocean,2023,1.04,101,33.1,8.05,2.6,29,3640,40,21,n/a
