@@ -3,10 +3,12 @@ from datetime import datetime
 
 from rich.console import Console
 
+from agent import ResearchResult
+
 console = Console()
 
 
-def save_report(result: dict, output_dir: str = "reports") -> str:
+def save_report(result: ResearchResult, output_dir: str = "reports") -> str:
     query = result["query"]
     body = result["report"]
     sources = result["sources"]

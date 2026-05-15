@@ -24,42 +24,42 @@ def _mock_result(report="## Report\n\nDone.", mode="general", query="test topic"
 # ---------------------------------------------------------------------------
 
 class TestCheckEnv:
-    def test_passes_with_both_keys_set(self, monkeypatch):
-        monkeypatch.setenv("ANTHROPIC_API_KEY", "k1")
-        monkeypatch.setenv("TAVILY_API_KEY", "k2")
+    def test_passes_with_both_vars_set(self, monkeypatch):
+        monkeypatch.setenv("LLM_BASE_URL", "http://localhost:11434")
+        monkeypatch.setenv("LLM_MODEL", "llama3")
         from main import _check_env
         with patch("main.console"):
             _check_env()  # must not raise
 
-    def test_exits_when_anthropic_key_missing(self, monkeypatch):
-        monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
-        monkeypatch.setenv("TAVILY_API_KEY", "k")
+    def test_exits_when_base_url_missing(self, monkeypatch):
+        monkeypatch.delenv("LLM_BASE_URL", raising=False)
+        monkeypatch.setenv("LLM_MODEL", "llama3")
         from main import _check_env
         with patch("main.console"), pytest.raises(SystemExit):
             _check_env()
 
-    def test_exits_when_tavily_key_missing(self, monkeypatch):
-        monkeypatch.setenv("ANTHROPIC_API_KEY", "k")
-        monkeypatch.delenv("TAVILY_API_KEY", raising=False)
+    def test_exits_when_model_missing(self, monkeypatch):
+        monkeypatch.setenv("LLM_BASE_URL", "http://localhost:11434")
+        monkeypatch.delenv("LLM_MODEL", raising=False)
         from main import _check_env
         with patch("main.console"), pytest.raises(SystemExit):
             _check_env()
 
-    def test_exits_when_both_keys_missing(self, monkeypatch):
-        monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
-        monkeypatch.delenv("TAVILY_API_KEY", raising=False)
+    def test_exits_when_both_vars_missing(self, monkeypatch):
+        monkeypatch.delenv("LLM_BASE_URL", raising=False)
+        monkeypatch.delenv("LLM_MODEL", raising=False)
         from main import _check_env
         with patch("main.console"), pytest.raises(SystemExit):
             _check_env()
 
-    def test_prints_missing_key_names_on_failure(self, monkeypatch):
-        monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
-        monkeypatch.setenv("TAVILY_API_KEY", "k")
+    def test_prints_missing_var_names_on_failure(self, monkeypatch):
+        monkeypatch.delenv("LLM_BASE_URL", raising=False)
+        monkeypatch.setenv("LLM_MODEL", "llama3")
         from main import _check_env
         with patch("main.console") as mock_console, pytest.raises(SystemExit):
             _check_env()
         output = str(mock_console.print.call_args_list)
-        assert "ANTHROPIC_API_KEY" in output
+        assert "LLM_BASE_URL" in output
 
 
 # ---------------------------------------------------------------------------

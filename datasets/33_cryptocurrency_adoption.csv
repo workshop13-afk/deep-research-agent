@@ -1,0 +1,31 @@
+country,year,crypto_ownership_pct,crypto_users_millions,regulation_status,bitcoin_atms_count,crypto_exchange_volume_usd_billions,cbdc_status,crypto_mining_twh,p2p_volume_index_0_100,institutional_interest_score_0_10
+United States,2023,16.4,54.2,Partial,29488,2488,Pilot,88.4,62,9.2
+India,2023,7.4,104.4,Taxed,288,248,Pilot,12.4,78,7.4
+Nigeria,2023,11.4,24.8,Restricted,42,48,Launched,1.4,88,5.8
+Vietnam,2023,21.4,20.4,Unclear,88,88,Researching,4.4,72,5.4
+United Kingdom,2023,10.4,6.8,Regulated,788,488,Researching,8.4,48,8.8
+Ukraine,2023,12.4,5.8,Legal,248,48,Launched,18.4,84,5.4
+Philippines,2023,13.4,14.8,Licensed,128,68,Launched,2.4,82,5.8
+Indonesia,2023,16.4,28.8,Legal,28,88,Pilot,8.4,68,5.8
+Brazil,2023,8.4,17.6,Legal,888,248,Pilot,28.4,62,7.4
+Russia,2023,11.8,17.4,Restricted,88,88,Launched,1488,58,4.4
+China,2023,7.4,104.8,Banned,8,88,Launched,44,42,3.4
+Germany,2023,7.8,6.4,Regulated,448,388,Researching,4.4,38,8.8
+Thailand,2023,8.4,6.2,Licensed,28,48,Pilot,2.4,62,5.8
+Canada,2023,13.4,5.4,Regulated,2888,488,Researching,18.4,42,8.4
+Australia,2023,8.8,2.4,Regulated,448,188,Researching,8.4,44,7.8
+France,2023,7.8,5.2,Regulated,128,288,Researching,2.4,38,7.8
+Argentina,2023,12.4,5.8,Taxed,88,48,Pilot,4.4,84,5.8
+Mexico,2023,14.4,18.8,Limited,88,88,Researching,2.4,72,5.4
+Turkey,2023,7.8,6.4,Banned,88,88,Launching,4.4,64,4.8
+South Africa,2023,7.8,4.8,Licensed,28,28,Researching,4.4,64,5.8
+Pakistan,2023,6.4,8.8,Unclear,8,18,Researching,2.4,74,3.8
+Japan,2023,4.4,5.6,Regulated,248,488,Launching,4.4,28,7.8
+South Korea,2023,7.8,4.2,Regulated,48,488,Researching,8.4,34,7.8
+El Salvador,2023,14.4,1.2,Legal Tender,488,18,Adopted,0.4,88,6.4
+Switzerland,2023,11.4,1.0,Regulated,188,488,Researching,2.4,44,9.2
+Singapore,2023,9.4,0.6,Licensed,48,288,Pilot,0.4,44,9.4
+Netherlands,2023,7.8,1.4,Regulated,428,288,Researching,2.4,38,8.4
+Sweden,2023,7.4,0.8,Regulated,68,188,Piloting,0.4,28,8.4
+Poland,2023,8.4,3.2,Taxed,248,88,Researching,2.4,48,6.4
+Kenya,2023,8.4,4.8,Uncertain,8,18,Researching,0.4,84,4.8

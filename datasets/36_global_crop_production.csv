@@ -1,0 +1,26 @@
+crop,year,global_production_mt_millions,top_producer_country,top_producer_share_pct,global_avg_yield_t_per_ha,harvested_area_mha,world_market_price_usd_per_tonne,export_trade_volume_mt_millions,climate_risk_score_0_10,water_footprint_m3_per_tonne
+Sugarcane,2023,1888,Brazil,38.4,72.4,26.4,44,88.4,4.2,180
+Maize (Corn),2023,1148,United States,31.4,5.8,197.4,248,188.4,6.4,1220
+Wheat,2023,782,China,17.2,3.4,228.4,244,188.4,7.2,1827
+Rice (Paddy),2023,744,China,28.4,4.7,158.4,488,44.4,8.4,2497
+Potatoes,2023,388,China,24.4,21.4,18.4,248,18.4,4.4,287
+Soybeans,2023,388,Brazil,36.4,3.1,124.4,548,188.4,7.4,2145
+Cassava,2023,344,Nigeria,22.4,12.4,27.8,248,8.4,4.2,110
+Palm Oil,2023,248,Indonesia,58.4,4.8,28.4,988,44.4,5.4,5000
+Barley,2023,144,Russia,14.4,3.1,47.4,244,28.4,6.4,1423
+Rapeseed/Canola,2023,88,Canada,26.4,2.2,40.4,544,18.4,6.8,1905
+Sunflower Seeds,2023,58,Ukraine,26.4,2.2,26.4,648,12.4,5.4,3366
+Cotton (Lint),2023,26,China,24.4,0.8,33.4,1888,8.4,7.4,10000
+Coffee (Green),2023,10.6,Brazil,38.4,0.8,12.4,4488,7.4,5.2,21000
+Cocoa Beans,2023,5.8,Ivory Coast,44.4,0.6,10.2,3488,2.4,5.8,27000
+Tea,2023,6.4,China,48.4,1.8,3.6,2888,1.8,4.8,8860
+Bananas,2023,124,India,26.4,22.4,5.6,488,18.4,4.2,790
+Tomatoes,2023,188,China,32.4,38.4,4.8,344,12.4,3.8,214
+Onions,2023,108,China,24.4,22.4,4.8,288,8.4,4.2,272
+Oranges,2023,78,Brazil,28.4,17.4,4.4,488,8.4,5.2,560
+Grapes,2023,78,China,18.4,12.4,6.4,744,8.4,5.4,608
+Apples,2023,88,China,48.4,24.4,3.8,644,10.4,5.8,822
+Sorghum,2023,58,United States,22.4,1.4,40.4,188,12.4,4.4,2853
+Millet,2023,28,India,38.4,1.2,23.2,288,2.4,3.8,4596
+Peanuts,2023,54,China,38.4,1.8,29.4,988,4.4,6.4,2782
+Sugar Beet,2023,188,Russia,22.4,64.4,2.9,44,8.4,4.2,632

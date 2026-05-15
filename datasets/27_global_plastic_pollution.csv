@@ -1,0 +1,31 @@
+country,year,plastic_production_mt_millions,plastic_waste_per_capita_kg,mismanaged_waste_pct,recycling_rate_pct,single_use_plastic_ban,ocean_plastic_contribution_kt,packaging_plastic_share_pct,plastic_tax_usd_per_tonne
+China,2023,32.0,58.4,24.8,22.4,Partial,3424,42.4,0
+United States,2023,42.0,130.4,2.4,8.8,Partial,32.4,44.8,0
+India,2023,26.0,12.4,88.4,8.4,Partial,1244,38.4,0
+Germany,2023,14.8,81.8,0.4,38.8,Yes,2.4,40.8,888
+Brazil,2023,10.6,42.4,48.8,12.4,Partial,448,38.4,0
+Japan,2023,9.4,38.4,0.8,84.4,No,18.4,48.8,0
+Russia,2023,8.8,48.4,28.4,12.4,No,68.4,42.8,0
+Indonesia,2023,6.8,16.4,82.4,8.4,Partial,1244,36.4,0
+United Kingdom,2023,4.8,99.4,0.4,42.4,Yes,2.4,42.4,1488
+France,2023,4.6,88.4,1.4,26.8,Yes,4.4,40.8,588
+Italy,2023,4.2,84.4,4.4,44.4,Yes,4.8,42.4,488
+Canada,2023,5.4,88.4,2.4,12.4,Partial,8.4,42.8,0
+South Korea,2023,3.8,148.4,1.8,62.4,Yes,8.4,38.4,888
+Turkey,2023,4.4,44.4,22.4,12.4,Partial,48.4,40.8,0
+Mexico,2023,4.2,28.4,48.4,8.4,Partial,248.4,38.8,0
+Thailand,2023,3.4,28.4,68.4,4.4,Partial,488.4,44.8,0
+Vietnam,2023,3.2,22.4,72.4,4.8,Partial,844.4,40.4,0
+Philippines,2023,2.8,18.4,82.4,4.4,Partial,688.4,38.8,0
+Spain,2023,3.8,74.4,2.4,22.4,Yes,6.4,40.8,488
+Netherlands,2023,1.8,88.4,0.4,48.4,Yes,1.4,42.4,688
+Australia,2023,2.8,108.4,2.8,14.4,Partial,8.4,42.8,0
+Sweden,2023,0.8,64.4,0.2,48.8,Yes,0.4,38.4,888
+Norway,2023,0.4,64.4,0.2,52.4,Yes,0.4,38.8,888
+Denmark,2023,0.6,74.4,0.4,42.4,Yes,0.8,40.4,688
+Belgium,2023,1.4,88.4,0.4,44.4,Yes,1.4,42.4,588
+Nigeria,2023,1.8,8.4,88.4,2.4,No,248.4,36.4,0
+Egypt,2023,1.4,12.4,72.4,6.4,Partial,148.4,38.4,0
+Bangladesh,2023,1.6,8.4,78.4,4.4,Partial,488.4,36.8,0
+Pakistan,2023,1.8,8.4,82.4,2.8,No,288.4,36.4,0
+Morocco,2023,0.8,18.4,42.4,8.4,Yes,28.4,38.8,0

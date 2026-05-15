@@ -2,16 +2,17 @@ import os
 import sys
 import tempfile
 import threading
-from unittest.mock import patch, MagicMock
+from collections.abc import Callable
 
 import streamlit as st
 from dotenv import load_dotenv
+from rich.console import Console
 from streamlit.runtime.scriptrunner import add_script_run_ctx, get_script_run_ctx
 
 sys.path.insert(0, os.path.dirname(__file__))
 load_dotenv()
 
-from agent import DeepResearchAgent
+from agent import DeepResearchAgent, ResearchResult
 from prompts import DEFAULT_PROMPT, PROMPT_DESCRIPTIONS, SYSTEM_PROMPTS, VULNERABLE_PROMPTS
 from report import save_report
 
@@ -23,37 +24,23 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+_QUIET_CONSOLE = Console(quiet=True)
+
+
 # ── Streamlit-aware agent ────────────────────────────────────────────────────
 class _StreamlitAgent(DeepResearchAgent):
-    """Subclass that fires a UI callback on every tool call and silences Rich output."""
+    """Subclass that fires a UI callback on tool actions and silences Rich output."""
 
-    def __init__(self, system_prompt_name: str, on_action):
-        super().__init__(system_prompt_name)
+    def __init__(self, system_prompt_name: str, on_action: Callable[[str, str], None]) -> None:
+        super().__init__(system_prompt_name, console=_QUIET_CONSOLE)
         self._on_action = on_action
-        self._st_ctx = get_script_run_ctx()  # capture session context for tool threads
 
-    def _attach_ctx(self):
-        if self._st_ctx:
-            add_script_run_ctx(threading.current_thread(), self._st_ctx)
-
-    def _search_datasets(self, query: str, max_results: int = 5) -> dict:
-        self._attach_ctx()
-        self._on_action("search", query)
-        return super()._search_datasets(query, max_results)
-
-    def _get_dataset(self, filename: str) -> dict:
-        self._attach_ctx()
-        self._on_action("read", filename)
-        return super()._get_dataset(filename)
-
-    def research(self, query: str) -> dict:
-        # Silence Rich console/progress — Streamlit handles all UI updates
-        with patch("agent.Progress"), patch("agent.console", MagicMock()):
-            return super().research(query)
+    def research(self, query: str, on_thinking: Callable[[str], None] | None = None) -> ResearchResult:
+        return super().research(query, on_action=self._on_action, on_thinking=on_thinking)
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
-def _report_as_string(result: dict) -> str:
+def _report_as_string(result: ResearchResult) -> str:
     with tempfile.TemporaryDirectory() as td:
         path = save_report(result, output_dir=td)
         return open(path, encoding="utf-8").read()
@@ -121,11 +108,11 @@ with st.sidebar:
 
 # ── Main layout ───────────────────────────────────────────────────────────────
 st.markdown("# 🔍 Deep Research Agent")
-st.caption("Search the web, synthesise sources, and generate a structured report.")
+st.caption("Search local datasets, synthesise findings, and generate a structured report.")
 
 query = st.text_area(
     "Research query",
-    placeholder="e.g.  Latest breakthroughs in GLP-1 obesity drugs in 2025",
+    placeholder="e.g.  What are the global GDP trends over the last decade?",
     height=90,
     disabled=st.session_state.running,
     label_visibility="collapsed",
@@ -157,15 +144,27 @@ if run_clicked and query.strip():
     st.session_state.report_md = None
     st.session_state.running = True
 
-    with st.status("Researching…", expanded=False) as status:
+    # Live thinking display — created before research so tokens stream in immediately
+    with st.expander("🧠 Model reasoning", expanded=True):
+        think_slot = st.empty()
+    _think_buf: list[str] = []
 
-        def on_action(kind: str, value: str):
+    with st.status("Researching…", expanded=False) as status:
+        _ctx = get_script_run_ctx()
+
+        def on_thinking(token: str) -> None:
+            add_script_run_ctx(threading.current_thread(), _ctx)
+            _think_buf.append(token)
+            think_slot.markdown("".join(_think_buf))
+
+        def on_action(kind: str, value: str) -> None:
+            add_script_run_ctx(threading.current_thread(), _ctx)
             icon = "🔎" if kind == "search" else "📄"
             status.write(f"{icon} **{kind}:** {value}")
 
         try:
             agent = _StreamlitAgent(system_prompt_name=selected_mode, on_action=on_action)
-            result = agent.research(query.strip())
+            result = agent.research(query.strip(), on_thinking=on_thinking)
 
             if result["report"]:
                 status.update(
@@ -202,6 +201,11 @@ if st.session_state.result:
     m3.metric("Mode", result["system_prompt_name"])
 
     st.divider()
+
+    if result.get("thinking"):
+        with st.expander("🧠 Model reasoning", expanded=False):
+            st.markdown(result["thinking"])
+
     st.markdown(result["report"])
 
     if result["sources"]:

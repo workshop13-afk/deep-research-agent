@@ -11,3 +11,5 @@ import pytest
 def set_env(monkeypatch):
     monkeypatch.setenv("ANTHROPIC_API_KEY", "test-anthropic-key")
     monkeypatch.setenv("TAVILY_API_KEY", "test-tavily-key")
+    monkeypatch.setenv("LLM_BASE_URL", "http://localhost:11434")
+    monkeypatch.setenv("LLM_MODEL", "llama3")

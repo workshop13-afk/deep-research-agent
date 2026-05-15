@@ -1,51 +1,21 @@
-"""Shared mock-building helpers for all test modules."""
-from unittest.mock import MagicMock
-
-SAMPLE_TAVILY_RESULTS = {
-    "query": "test query",
-    "results": [
-        {
-            "title": "Article One",
-            "url": "https://example.com/article-1",
-            "content": "Detailed content of article one.",
-            "score": 0.95,
-            "published_date": "2025-01-15",
-        },
-        {
-            "title": "Article Two",
-            "url": "https://example.com/article-2",
-            "content": "Detailed content of article two.",
-            "score": 0.82,
-            "published_date": "2025-01-10",
-        },
-    ],
-}
-
-def make_text_block(text="## Report\n\nFindings."):
-    b = MagicMock()
-    b.type = "text"
-    b.text = text
-    return b
+"""Shared test data and factory helpers."""
 
 
-def make_tool_block(name="search_web", tool_id="tool_abc", inputs=None):
-    b = MagicMock()
-    b.type = "tool_use"
-    b.name = name
-    b.id = tool_id
-    b.input = inputs or {"query": "test", "max_results": 5}
-    return b
-
-
-def make_end_turn_response(text="## Report\n\nFindings."):
-    r = MagicMock()
-    r.stop_reason = "end_turn"
-    r.content = [make_text_block(text)]
-    return r
-
-
-def make_tool_response(name="search_web", tool_id="tool_abc", inputs=None):
-    r = MagicMock()
-    r.stop_reason = "tool_use"
-    r.content = [make_tool_block(name, tool_id, inputs)]
-    return r
+def make_research_result(
+    query="test query",
+    report="## Report\n\nFindings.",
+    sources=None,
+    search_count=2,
+    system_prompt_name="general",
+    timestamp="2025-05-13T10:00:00",
+) -> dict:
+    return {
+        "query": query,
+        "report": report,
+        "sources": sources if sources is not None else [
+            {"title": "Source A", "url": "file_a.csv", "published_date": "", "score": 0.9},
+        ],
+        "search_count": search_count,
+        "system_prompt_name": system_prompt_name,
+        "timestamp": timestamp,
+    }

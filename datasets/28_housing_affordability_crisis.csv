@@ -1,0 +1,31 @@
+city,country,year,median_home_price_usd_thousands,median_household_income_usd_thousands,price_to_income_ratio,rent_burden_pct_income,homelessness_per_10k_pop,housing_starts_per_1000_pop,social_housing_pct_stock,vacancy_rate_pct
+Hong Kong,China,2023,1284,52,24.8,52,5.4,0.8,2.4,4.8
+Vancouver,Canada,2023,1088,92,11.8,48,8.8,2.8,6.4,2.8
+Sydney,Australia,2023,988,108,9.2,42,5.8,3.4,4.8,2.2
+London,United Kingdom,2023,844,88,9.6,44,18.8,2.4,22.4,2.4
+Auckland,New Zealand,2023,788,82,9.6,40,4.8,3.4,3.8,1.8
+San Jose,United States,2023,1488,172,8.6,38,22.4,2.8,1.2,4.2
+San Francisco,United States,2023,1388,148,9.4,46,26.8,2.4,1.8,5.2
+Amsterdam,Netherlands,2023,544,62,8.8,42,2.8,4.8,44.8,1.2
+Munich,Germany,2023,888,76,11.6,44,2.4,2.8,18.4,1.4
+Oslo,Norway,2023,648,88,7.4,36,3.4,4.8,4.8,2.4
+Singapore,Singapore,2023,1188,128,9.3,40,0.8,2.8,78.4,6.8
+Melbourne,Australia,2023,788,96,8.2,40,4.8,3.8,3.4,2.4
+Zurich,Switzerland,2023,1188,128,9.3,42,1.4,2.4,26.4,0.8
+Stockholm,Sweden,2023,488,72,6.8,38,2.4,4.4,18.8,1.4
+Seoul,South Korea,2023,644,72,8.9,44,2.8,3.8,8.4,1.8
+New York,United States,2023,888,88,10.1,48,28.4,2.2,8.4,4.8
+Toronto,Canada,2023,844,98,8.6,44,6.4,2.8,5.4,2.2
+Paris,France,2023,688,58,11.9,46,2.8,2.2,14.4,3.8
+Los Angeles,United States,2023,944,82,11.5,52,42.4,1.8,1.4,5.8
+Vienna,Austria,2023,448,64,7.0,38,2.4,4.4,60.4,2.4
+Brussels,Belgium,2023,388,58,6.7,38,2.4,4.8,8.4,6.8
+Dublin,Ireland,2023,544,72,7.6,42,4.8,2.4,8.4,1.8
+Nairobi,Kenya,2023,88,14,6.3,52,12.4,3.2,1.2,14.4
+Mumbai,India,2023,188,18,10.4,54,8.4,1.4,0.8,18.8
+São Paulo,Brazil,2023,128,18,7.1,40,8.4,2.8,1.4,12.4
+Johannesburg,South Africa,2023,128,28,4.6,38,12.8,1.4,2.4,16.4
+Cairo,Egypt,2023,88,14,6.3,48,4.4,4.8,0.8,22.4
+Mexico City,Mexico,2023,148,22,6.7,42,2.8,2.8,1.8,14.8
+Istanbul,Turkey,2023,188,28,6.7,44,4.4,4.2,1.4,8.8
+Warsaw,Poland,2023,288,38,7.6,38,1.8,4.8,6.4,5.4

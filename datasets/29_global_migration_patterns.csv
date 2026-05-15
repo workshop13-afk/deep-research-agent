@@ -1,0 +1,31 @@
+country,year,emigration_stock_millions,immigration_stock_millions,net_migration_rate_per_1000,remittances_received_billions,remittances_gdp_pct,refugee_hosted_thousands,skilled_emigration_rate_pct,top_destination_country
+India,2023,18.0,5.4,-0.4,125.0,2.8,248,21.4,United Arab Emirates
+Mexico,2023,12.4,1.2,-3.4,66.0,19.8,48,8.4,United States
+Russia,2023,10.8,12.4,0.2,4.4,0.2,1248,14.4,Germany
+China,2023,10.4,1.0,-0.1,18.0,0.1,1.4,8.4,United States
+Ukraine,2023,6.8,2.8,-12.8,9.8,8.4,6248,28.4,Poland
+Philippines,2023,6.2,0.4,-2.8,38.0,9.8,0.4,14.8,Saudi Arabia
+Bangladesh,2023,7.8,0.8,-3.8,21.4,5.2,0.4,8.4,Saudi Arabia
+Pakistan,2023,7.4,1.8,-1.8,27.4,8.4,1488,8.4,Saudi Arabia
+Syria,2023,8.4,0.2,-16.4,1.8,8.8,13600,28.4,Turkey
+Nigeria,2023,1.8,1.4,-0.2,21.4,5.2,88,12.4,United Kingdom
+Germany,2023,4.2,16.2,8.4,2.4,0.1,2488,2.4,Switzerland
+United States,2023,3.0,51.0,4.8,6.8,0.03,188,2.8,Mexico
+United Kingdom,2023,4.8,9.8,3.4,1.8,0.1,148,8.4,Australia
+France,2023,2.8,8.8,1.4,1.4,0.08,448,4.4,Morocco
+Turkey,2023,3.2,4.4,-1.8,1.4,0.2,3648,8.4,Germany
+Colombia,2023,3.0,0.8,-3.4,10.4,3.8,1848,12.4,United States
+Venezuela,2023,7.8,0.8,-16.4,0.8,2.4,248,22.4,Colombia
+Morocco,2023,4.4,0.2,-3.8,11.4,8.4,0.4,12.4,France
+Ethiopia,2023,0.8,1.4,0.4,0.4,0.2,888,8.4,Kenya
+Myanmar,2023,2.4,0.4,-4.4,3.4,6.4,1088,8.4,Thailand
+Sri Lanka,2023,1.8,0.4,-4.8,7.2,12.4,0.4,22.4,Saudi Arabia
+Nepal,2023,2.4,0.8,-8.4,9.8,26.4,0.4,22.4,India
+Honduras,2023,1.4,0.2,-6.4,7.8,26.8,0.4,18.4,United States
+Ecuador,2023,1.4,0.4,-4.8,4.8,6.4,488,12.4,United States
+Ghana,2023,0.8,0.4,-0.8,4.8,6.8,0.4,18.4,United Kingdom
+Poland,2023,2.2,1.8,-0.4,1.4,0.4,1448,14.4,Germany
+Romania,2023,3.8,0.4,-5.8,3.2,4.8,1.4,22.4,Italy
+South Africa,2023,0.8,4.2,2.8,0.8,0.2,288,12.4,United Kingdom
+Kenya,2023,0.8,1.4,0.8,4.8,8.4,588,14.4,United Kingdom
+Canada,2023,2.8,8.4,6.8,1.8,0.1,128,2.8,United States

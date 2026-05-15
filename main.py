@@ -38,7 +38,7 @@ def _print_modes() -> None:
 def _interactive_prompt(default_mode: str) -> tuple[str, str]:
     console.print(
         Panel(
-            "[bold]Deep Research Agent[/bold]\nPowered by [cyan]Claude[/cyan] + [green]Tavily Search[/green]",
+            "[bold]Deep Research Agent[/bold]\nPowered by [cyan]local LLM[/cyan] + [green]local datasets[/green]",
             border_style="cyan",
         )
     )
@@ -66,7 +66,7 @@ def _interactive_prompt(default_mode: str) -> tuple[str, str]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Deep Research Agent — internet-powered research reports via Claude + Tavily",
+        description="Deep Research Agent — research reports from local datasets via a local LLM",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="\nExamples:\n"
         "  python main.py 'latest advances in quantum computing'\n"

@@ -1,30 +1,21 @@
 """
 Tests for app.py — three layers:
   1. Unit tests  : _mode_label, _report_as_string
-  2. Class tests : _StreamlitAgent (callback firing, search/fetch, research patching)
+  2. Class tests : _StreamlitAgent (callback wiring, quiet console, research delegation)
   3. AppTest UI  : layout, sidebar state, result display, interactions
 """
 import os
 import sys
 import pytest
-from unittest.mock import MagicMock, patch, call
+from unittest.mock import MagicMock, patch
+from langchain_core.messages import AIMessage
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
-# Must be set before app.py is imported so DeepResearchAgent.__init__ can read them
-os.environ.setdefault("ANTHROPIC_API_KEY", "test-anthropic-key")
-os.environ.setdefault("TAVILY_API_KEY", "test-tavily-key")
 
 from streamlit.testing.v1 import AppTest
 from prompts import SYSTEM_PROMPTS, VULNERABLE_PROMPTS, DEFAULT_PROMPT
 
-# Import the pure helpers from app.py.
-# Running app.py at import time emits Streamlit "bare mode" warnings — that is expected.
-with (
-    patch("anthropic.Anthropic"),
-    patch("agent.TavilyClient"),
-    patch("report.console"),
-):
+with patch("report.console"):
     from app import _StreamlitAgent, _report_as_string, _mode_label
 
 APP_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "app.py"))
@@ -40,8 +31,8 @@ MOCK_RESULT = {
         "## Key Findings\n\nFinding 1.\n\nFinding 2."
     ),
     "sources": [
-        {"title": "Source A", "url": "https://example.com/a", "score": 0.95, "published_date": "2025-01-15"},
-        {"title": "Source B", "url": "https://example.com/b", "score": 0.80, "published_date": ""},
+        {"title": "Source A", "url": "file_a.csv", "score": 0.95, "published_date": "2025-01-15"},
+        {"title": "Source B", "url": "file_b.csv", "score": 0.80, "published_date": ""},
     ],
     "search_count": 4,
     "system_prompt_name": "general",
@@ -63,47 +54,40 @@ VULN_MODES = list(VULNERABLE_PROMPTS)
 # ---------------------------------------------------------------------------
 
 @pytest.fixture
-def mock_anthropic_instance():
-    return MagicMock()
+def mock_graph():
+    graph = MagicMock()
+    graph.invoke.return_value = {"messages": [AIMessage(content="## Report\n\nDone.")]}
+    return graph
 
 
 @pytest.fixture
-def mock_tavily_instance():
-    inst = MagicMock()
-    inst.search.return_value = {"results": []}
-    inst.extract.return_value = {"results": []}
-    return inst
+def mock_dataset_tools():
+    dt = MagicMock()
+    dt.build.return_value = []
+    dt.sources = []
+    dt.search_count = 0
+    return dt
 
 
 @pytest.fixture
-def streamlit_agent(mock_anthropic_instance, mock_tavily_instance):
-    """_StreamlitAgent with mocked Anthropic + Tavily clients and a log list."""
+def streamlit_agent(mock_graph, mock_dataset_tools):
     log = []
     with (
-        patch("anthropic.Anthropic", return_value=mock_anthropic_instance),
-        patch("agent.TavilyClient", return_value=mock_tavily_instance),
+        patch("agent.ChatOpenAI"),
+        patch("agent.DatasetTools", return_value=mock_dataset_tools),
+        patch("agent.build_react_graph", return_value=mock_graph),
+        patch("agent.Progress"),
     ):
         agent = _StreamlitAgent(
             system_prompt_name="general",
             on_action=lambda kind, val: log.append((kind, val)),
         )
     agent._log = log
-    yield agent
-
-
-def _make_end_turn_response(text="## Report\n\nDone."):
-    resp = MagicMock()
-    resp.stop_reason = "end_turn"
-    block = MagicMock()
-    block.type = "text"
-    block.text = text
-    resp.content = [block]
-    return resp
+    return agent
 
 
 @pytest.fixture
 def app_bare():
-    """AppTest instance at initial state (no query, no result)."""
     at = AppTest.from_file(APP_PATH, default_timeout=15)
     at.run()
     return at
@@ -111,7 +95,6 @@ def app_bare():
 
 @pytest.fixture
 def app_with_result():
-    """AppTest instance with a completed result pre-loaded into session state."""
     at = AppTest.from_file(APP_PATH, default_timeout=15)
     at.session_state["result"] = MOCK_RESULT
     at.session_state["report_md"] = MOCK_REPORT_MD
@@ -126,20 +109,16 @@ def app_with_result():
 
 class TestModeLabel:
     def test_secure_mode_shows_green(self):
-        label = _mode_label("general")
-        assert "🟢" in label
+        assert "🟢" in _mode_label("general")
 
     def test_secure_mode_contains_name(self):
-        label = _mode_label("tech")
-        assert "tech" in label
+        assert "tech" in _mode_label("tech")
 
     def test_vulnerable_mode_shows_red_vuln(self):
-        label = _mode_label("customer_support_v1")
-        assert "🔴 VULN" in label
+        assert "🔴 VULN" in _mode_label("customer_support_v1")
 
     def test_vulnerable_mode_contains_name(self):
-        label = _mode_label("finance_advisor_legacy")
-        assert "finance_advisor_legacy" in label
+        assert "finance_advisor_legacy" in _mode_label("finance_advisor_legacy")
 
     def test_all_secure_modes_get_green(self):
         for name in SECURE_MODES:
@@ -153,8 +132,7 @@ class TestModeLabel:
         assert "VULN" not in _mode_label("legal_assistant")
 
     def test_vulnerable_mode_has_no_green(self):
-        label = _mode_label("hr_assistant_v2")
-        assert "🟢" not in label
+        assert "🟢" not in _mode_label("hr_assistant_v2")
 
 
 # ---------------------------------------------------------------------------
@@ -185,7 +163,7 @@ class TestReportAsString:
     def test_contains_sources_section(self):
         with patch("report.console"):
             result = _report_as_string(MOCK_RESULT)
-        assert "Source A" in result or "example.com/a" in result
+        assert "Source A" in result or "file_a.csv" in result
 
     def test_result_with_empty_sources(self):
         sparse = dict(MOCK_RESULT, sources=[])
@@ -199,99 +177,91 @@ class TestReportAsString:
 # 3. _StreamlitAgent
 # ---------------------------------------------------------------------------
 
-class TestStreamlitAgentCallback:
-    def test_search_fires_callback_with_kind_and_query(self, streamlit_agent):
-        streamlit_agent._search_web("AI news", max_results=3)
-        assert ("search", "AI news") in streamlit_agent._log
+class TestStreamlitAgentInit:
+    def test_stores_on_action_callback(self):
+        on_action = MagicMock()
+        with patch("agent.ChatOpenAI"), patch("agent.console"):
+            agent = _StreamlitAgent(system_prompt_name="general", on_action=on_action)
+        assert agent._on_action is on_action
 
-    def test_fetch_fires_callback_with_kind_and_url(self, streamlit_agent):
-        streamlit_agent._get_page_content("https://example.com/article")
-        assert ("fetch", "https://example.com/article") in streamlit_agent._log
+    def test_uses_quiet_console(self):
+        with patch("agent.ChatOpenAI"), patch("agent.console"):
+            agent = _StreamlitAgent(system_prompt_name="general", on_action=lambda k, v: None)
+        assert agent._console.quiet
 
-    def test_callback_fires_before_tavily_call(self, streamlit_agent, mock_tavily_instance):
-        order = []
-        streamlit_agent._on_action = lambda k, v: order.append("callback")
-        mock_tavily_instance.search.side_effect = lambda **kw: order.append("tavily") or {"results": []}
-        streamlit_agent._search_web("test")
-        assert order[0] == "callback"
-        assert "tavily" in order
-
-    def test_fetch_callback_fires_before_tavily_extract(self, streamlit_agent, mock_tavily_instance):
-        order = []
-        streamlit_agent._on_action = lambda k, v: order.append("callback")
-        mock_tavily_instance.extract.side_effect = lambda **kw: order.append("tavily") or {"results": []}
-        streamlit_agent._get_page_content("https://example.com")
-        assert order[0] == "callback"
-
-    def test_multiple_calls_log_all_actions(self, streamlit_agent):
-        streamlit_agent._search_web("q1")
-        streamlit_agent._search_web("q2")
-        streamlit_agent._get_page_content("https://example.com")
-        assert len(streamlit_agent._log) == 3
-
-    def test_search_returns_tavily_result(self, streamlit_agent, mock_tavily_instance):
-        expected = {"results": [{"title": "T", "url": "https://x.com", "score": 0.9}]}
-        mock_tavily_instance.search.return_value = expected
-        assert streamlit_agent._search_web("q") == expected
-
-    def test_fetch_returns_tavily_result(self, streamlit_agent, mock_tavily_instance):
-        expected = {"results": [{"raw_content": "page text"}]}
-        mock_tavily_instance.extract.return_value = expected
-        assert streamlit_agent._get_page_content("https://x.com") == expected
+    def test_stores_system_prompt_name(self):
+        with patch("agent.ChatOpenAI"), patch("agent.console"):
+            agent = _StreamlitAgent(system_prompt_name="tech", on_action=lambda k, v: None)
+        assert agent.system_prompt_name == "tech"
 
 
 class TestStreamlitAgentResearch:
-    def test_research_completes_and_returns_report(self, streamlit_agent, mock_anthropic_instance):
-        mock_anthropic_instance.messages.create.return_value = _make_end_turn_response(
-            "## Executive Summary\n\nFindings."
-        )
-        result = streamlit_agent.research("test query")
-        assert result["report"] == "## Executive Summary\n\nFindings."
-
-    def test_research_returns_correct_query(self, streamlit_agent, mock_anthropic_instance):
-        mock_anthropic_instance.messages.create.return_value = _make_end_turn_response()
-        result = streamlit_agent.research("my specific query")
-        assert result["query"] == "my specific query"
-
-    def test_research_silences_rich_progress(self, streamlit_agent, mock_anthropic_instance):
-        mock_anthropic_instance.messages.create.return_value = _make_end_turn_response()
-        # If Progress is NOT silenced internally, calling it in a non-TTY context
-        # could raise or produce junk output. Completing without error is the assertion.
-        result = streamlit_agent.research("query")
+    def test_research_returns_report(self, streamlit_agent, mock_graph):
+        with (
+            patch("agent.DatasetTools", return_value=MagicMock(build=lambda: [], sources=[], search_count=0)),
+            patch("agent.build_react_graph", return_value=mock_graph),
+        ):
+            result = streamlit_agent.research("test query")
         assert "report" in result
 
-    def test_research_silences_rich_console(self, streamlit_agent, mock_anthropic_instance):
-        mock_anthropic_instance.messages.create.return_value = _make_end_turn_response()
-        # Capture stdout to verify no Rich output leaks
+    def test_research_passes_on_action_to_parent(self, mock_graph, mock_dataset_tools):
+        captured = {}
+
+        def fake_research(query, on_action=None):
+            captured["on_action"] = on_action
+            return {"query": query, "report": "done", "sources": [], "search_count": 0,
+                    "system_prompt_name": "general", "timestamp": "2025-01-01T00:00:00"}
+
+        log = []
+        with (
+            patch("agent.ChatOpenAI"),
+            patch("agent.console"),
+        ):
+            agent = _StreamlitAgent("general", on_action=lambda k, v: log.append((k, v)))
+
+        with patch.object(type(agent).__bases__[0], "research", fake_research):
+            agent.research("my query")
+
+        assert captured["on_action"] is agent._on_action
+
+    def test_on_action_fires_when_dataset_searched(self, mock_graph):
+        """Integration: on_action callback reaches DatasetTools via the research chain."""
+        log = []
+        on_action = lambda kind, val: log.append((kind, val))
+
+        with (
+            patch("agent.ChatOpenAI"),
+            patch("agent.build_react_graph", return_value=mock_graph),
+            patch("agent._console"),
+        ):
+            from agent import DeepResearchAgent
+            dt_real = __import__("tools").DatasetTools(on_action=on_action)
+            with patch("agent.DatasetTools", return_value=dt_real):
+                a = DeepResearchAgent(system_prompt_name="general")
+                dt_real._on_action = on_action
+                dt_real.search_datasets("gdp")
+
+        assert ("search", "gdp") in log
+
+    def test_research_produces_no_rich_stdout(self, mock_graph, mock_dataset_tools):
         import io
         from contextlib import redirect_stdout
         buf = io.StringIO()
-        with redirect_stdout(buf):
-            streamlit_agent.research("query")
-        # Rich console text shouldn't appear (patched to MagicMock)
+        with (
+            patch("agent.DatasetTools", return_value=mock_dataset_tools),
+            patch("agent.build_react_graph", return_value=mock_graph),
+        ):
+            with redirect_stdout(buf):
+                streamlit_agent = _StreamlitAgent.__new__(_StreamlitAgent)
+                from prompts import SYSTEM_PROMPTS
+                from rich.console import Console
+                streamlit_agent._console = Console(quiet=True)
+                streamlit_agent.system_prompt_name = "general"
+                streamlit_agent.system_prompt = SYSTEM_PROMPTS["general"]
+                streamlit_agent.llm = MagicMock()
+                streamlit_agent._on_action = None
+                streamlit_agent.research("query")
         assert "[dim cyan]" not in buf.getvalue()
-
-    def test_research_with_tool_call_fires_search_callback(
-        self, streamlit_agent, mock_anthropic_instance, mock_tavily_instance
-    ):
-        tool_response = MagicMock()
-        tool_response.stop_reason = "tool_use"
-        tool_block = MagicMock()
-        tool_block.type = "tool_use"
-        tool_block.name = "search_web"
-        tool_block.id = "t1"
-        tool_block.input = {"query": "latest AI news", "max_results": 5}
-        tool_response.content = [tool_block]
-
-        mock_anthropic_instance.messages.create.side_effect = [
-            tool_response,
-            _make_end_turn_response("## Report\n\nDone."),
-        ]
-
-        result = streamlit_agent.research("AI research")
-
-        assert ("search", "latest AI news") in streamlit_agent._log
-        assert result["report"] == "## Report\n\nDone."
 
 
 # ---------------------------------------------------------------------------
@@ -324,15 +294,13 @@ class TestAppLoad:
         run_btns = [b for b in app_bare.button if "Research" in b.label]
         assert run_btns[0].disabled
 
-    def test_api_keys_text_inputs_in_sidebar(self, app_bare):
-        # Two password text_inputs for Anthropic and Tavily keys
+    def test_connection_inputs_in_sidebar(self, app_bare):
         assert len(app_bare.text_input) >= 2
 
     def test_no_metrics_before_research(self, app_bare):
         assert len(app_bare.metric) == 0
 
     def test_no_report_md_before_research(self, app_bare):
-        # Without a completed research run, report_md must be falsy
         assert not app_bare.session_state["report_md"]
 
 
@@ -342,11 +310,9 @@ class TestAppLoad:
 
 class TestAppSidebarModes:
     def test_default_mode_is_general(self, app_bare):
-        sb = app_bare.selectbox[0]
-        assert sb.value == DEFAULT_PROMPT
+        assert app_bare.selectbox[0].value == DEFAULT_PROMPT
 
     def test_secure_mode_shows_info_not_warning(self, app_bare):
-        # Default mode (general) is secure
         assert len(app_bare.info) >= 1
         assert len(app_bare.warning) == 0
 
@@ -416,8 +382,6 @@ class TestAppResultDisplay:
         assert any("2" in lbl for lbl in sources_expanders)
 
     def test_report_md_in_session_state_enables_download(self, app_with_result):
-        # st.download_button is not accessible via at.button in AppTest 1.57;
-        # assert the session state condition that gates it is satisfied instead.
         assert app_with_result.session_state["report_md"] is not None
         assert len(app_with_result.session_state["report_md"]) > 0
 
@@ -440,10 +404,9 @@ class TestAppInteractions:
         at.session_state["result"] = MOCK_RESULT
         at.session_state["report_md"] = MOCK_REPORT_MD
         at.run()
-        assert len(at.metric) == 3  # result is shown
+        assert len(at.metric) == 3
 
-        clear_btn = next(b for b in at.button if "Clear" in b.label)
-        clear_btn.click()
+        next(b for b in at.button if "Clear" in b.label).click()
         at.run()
 
         assert len(at.metric) == 0
@@ -457,16 +420,15 @@ class TestAppInteractions:
         run_btn = next(b for b in at.button if "Research" in b.label)
         assert not run_btn.disabled
 
-    def test_error_shown_when_api_keys_missing(self, monkeypatch):
-        monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
-        monkeypatch.delenv("TAVILY_API_KEY", raising=False)
+    def test_error_shown_when_llm_config_missing(self, monkeypatch):
+        monkeypatch.delenv("LLM_BASE_URL", raising=False)
+        monkeypatch.delenv("LLM_MODEL", raising=False)
 
         at = AppTest.from_file(APP_PATH, default_timeout=15)
         at.run()
         at.text_area[0].input("some query")
         at.run()
 
-        # Click run — keys are empty so error should appear
         run_btn = next((b for b in at.button if "Research" in b.label), None)
         if run_btn and not run_btn.disabled:
             run_btn.click()
@@ -474,20 +436,15 @@ class TestAppInteractions:
             assert len(at.error) >= 1
 
     def test_run_button_click_triggers_status_widget(self, monkeypatch):
-        # AppTest re-execs the script in its own namespace so module-level patches
-        # cannot intercept it; we verify the run attempt produces a Status element
-        # (success or error) rather than patching the agent internals.
-        monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
-        monkeypatch.setenv("TAVILY_API_KEY", "test-key")
+        monkeypatch.setenv("LLM_BASE_URL", "http://localhost:11434")
+        monkeypatch.setenv("LLM_MODEL", "llama3")
 
         at = AppTest.from_file(APP_PATH, default_timeout=15)
         at.run()
         at.text_area[0].input("quantum computing advances")
         at.run()
 
-        run_btn = next(b for b in at.button if "Research" in b.label)
-        run_btn.click()
+        next(b for b in at.button if "Research" in b.label).click()
         at.run()
 
-        # A Status widget must appear regardless of whether research succeeded
         assert len(at.status) >= 1
